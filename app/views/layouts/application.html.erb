@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FacebookClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <div class="container">
+     <div class="left">
+       <nav class="navbar navbar-dark bg-light fixed-top">
+        <span class="navbar-brand mb-0 h1">facebook clone</span>
+       <p class="fbp">FacebookClone helps you connect and share with</p>
+       <p class="fbp">the people in your life.</p>
+       </nav>
+     </div>
+     <div class="right">
+   <% flash.each do |key, value| %>
+     <%= content_tag(:div, value, class: "#{key}") %>
+   <% end %>
+   <% if logged_in? %>
+     <button type="button" class="btn btn-info"><%= link_to "Profile", user_path(current_user.id) %></button>
+     <button type="button" class="btn btn-warning"><%= link_to "Logout", session_path(current_user.id), method: :delete %></button>
+     <button type="button" class="btn"><%= link_to "Posts", feeds_path(current_user.id) %></button>
+   <% else %>
+     <button type="button" class="btn btn-info"><%= link_to "Sign up", new_user_path %></button>
+     <button type="button" class="btn btn-warning"><%= link_to "Login", new_session_path %></button>
+   <% end %>
+       <%= yield %>
+     </div>
+   </div>
+   <div class="footer">
+     <footer>
+       <p>English (UK) မြန်မာဘာသာ ภาษาไทย 中文(简体) Bahasa Melayu 日本語 العربية Bahasa Indonesia Español Português (Brasil) Français (France) <button type="button"class="btnplus">+</button></p>
+       <br>
+       <p>Sign-Up Log-In Messenger Facebook-Lite Watch People Pages Page-categories Places Games Locations Marketplace Facebook Pay Groups Oculus Portal Instagram Local Fundraisers Services Voting Information Centre About</p>
+       <p>Create-ad Create Page Developers Careers Privacy Cookies AdChoices Terms Help Settings Activity log</p>
+       <p>FacebookClone © 2020</p>
+     </footer>
+   </div>
+ </body>
+</html>

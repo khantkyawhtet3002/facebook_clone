@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<p class="showp">
+  <strong>Image:</strong>
+  <%= image_tag @feed.image.url %>
+</p class="showp">
+<p>
+  <strong>Content:</strong>
+  <%= @feed.content %>
+</p>
+<button type="button" class="btn btn-primary btn-sm"><%= link_to 'Edit', edit_feed_path(@feed) %></button>
+<button type="button" class="btn btn-info btn-sm"><%= link_to 'Back', feeds_path %></button>

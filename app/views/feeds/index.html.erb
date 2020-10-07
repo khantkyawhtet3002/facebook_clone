@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<h1>Posts</h1>
+<br>
+<table class="picture">
+  <div class="row">
+    <% @feeds.each do |feed| %>
+      <div class="btn-group btn-group-sm">
+        <div class="col-md-12"><p class="showp">Username: <%= feed.user.name %></p></div>
+        <div class="col-md-12 posted_comment"><p class="showp">Content：<%= feed.content %></p></div>
+        <div class="col-md-12 posted_picture"><%= image_tag "#{feed.image}" %></div>
+        <button type="button" class="btn btn-info"><%= link_to 'Detail', feed %></button>
+        <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_feed_path(feed) %></button>
+        <button type="button" class="btn btn-danger"><%= link_to 'Delete', feed, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <button type="button" class="btn btn-info"><%= link_to 'New Post', new_feed_path %></button>
+</table>
