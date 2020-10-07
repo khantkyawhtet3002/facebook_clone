@@ -2,7 +2,6 @@
   <% if feed.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
-
       <ul>
       <% feed.errors.full_messages.each do |message| %>
         <li><%= message %></li>
